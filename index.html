@@ -10,56 +10,65 @@
 
   <title>Frontend Mentor | IP Address Tracker</title>
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution {
-      font-size: 0.6875rem;
-      text-align: center;
-    }
+  <link rel="stylesheet" href="styles.css">
 
-    .attribution a {
-      color: hsl(228, 45%, 44%);
-    }
-  </style>
+  <!-- Leaflet CSS -->
+  <link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+>
+
+  <!-- Leaflet JavaScript -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="" defer></script>
+
+  <script src="script.js" defer></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+    rel="stylesheet">
 </head>
 
 <body>
 
-  <h1>IP Address Tracker</h1>
+  <header class="header">
+    <h1>IP Address Tracker</h1>
 
-  <form id="search-form">
-    <label for="ip-address">IP address or domain</label>
+    <form id="search-form">
+      <label for="ip-address">IP address or domain</label>
 
-    <input type="text" id="ip-address" name="ip-address" placeholder="Search for any IP address or domain" required>
+      <input type="text" id="ip-address" name="ip-address" placeholder="Search for any IP address or domain" required>
 
-    <button type="submit">Search</button>
-  </form>
+      <button type="submit">Search</button>
+    </form>
+  </header>
 
-  
- <section id="results" aria-label="IP address lookup results">
-  <div>
-    <h2>IP Address</h2>
-    <p id="result-ip">—</p>
-  </div>
 
-   <div>
-    <h2>Location</h2>
-    <p id="result-location">—</p>
-  </div>
+  <section id="results" aria-label="IP address lookup results">
+    <div>
+      <h2>IP Address</h2>
+      <p id="result-ip">—</p>
+    </div>
 
-   <div>
-    <h2>Timezone</h2>
-    <p id="result-timezone">UTC —</p> <!-- add offset value dynamically using the API -->
-  </div>
+    <div>
+      <h2>Location</h2>
+      <p id="result-location">—</p>
+    </div>
 
-   <div>
-    <h2>ISP</h2>
-    <p id="result-isp">—</p> 
-  </div>
+    <div>
+      <h2>Timezone</h2>
+      <p id="result-timezone">UTC —</p> <!-- add offset value dynamically using the API -->
+    </div>
 
-</section>
+    <div>
+      <h2>ISP</h2>
+      <p id="result-isp">—</p>
+    </div>
 
-<div id="map" aria-label="Map showing the IP address location"></div>
+  </section>
+
+  <div id="map" aria-label="Map showing the IP address location"></div>
 
   <footer class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>.
