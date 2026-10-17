@@ -85,41 +85,44 @@
 
   <!-- JavaScript updates the values in this section
        after a successful IP address lookup. -->
-  <section id="results" aria-label="IP address lookup results">
 
-    <!-- IP address returned by the lookup. -->
-    <div>
-      <h2>IP Address</h2>
-      <p id="result-ip">—</p>
-    </div>
+  <main>
+    <section id="results" aria-label="IP address lookup results">
 
-    <!-- City and region associated with the IP address. -->
-    <div>
-      <h2>Location</h2>
-      <p id="result-location">—</p>
-    </div>
+      <!-- IP address returned by the lookup. -->
+      <div>
+        <h2>IP Address</h2>
+        <p id="result-ip">—</p>
+      </div>
 
-    <!-- Timezone offset returned by the lookup. -->
-    <div>
-      <h2>Timezone</h2>
-      <p id="result-timezone">UTC —</p>
-    </div>
+      <!-- City and region associated with the IP address. -->
+      <div>
+        <h2>Location</h2>
+        <p id="result-location">—</p>
+      </div>
 
-    <!-- Internet Service Provider. -->
-    <div>
-      <h2>ISP</h2>
-      <p id="result-isp">—</p>
-    </div>
+      <!-- Timezone offset returned by the lookup. -->
+      <div>
+        <h2>Timezone</h2>
+        <p id="result-timezone">UTC —</p>
+      </div>
 
-  </section>
+      <!-- Internet Service Provider. -->
+      <div>
+        <h2>ISP</h2>
+        <p id="result-isp">—</p>
+      </div>
 
-  <!-- ========================================
+    </section>
+
+    <!-- ========================================
        INTERACTIVE MAP
   ======================================== -->
 
-  <!-- Leaflet renders the map inside this element.
-       JavaScript changes the center and marker location. -->
-  <div id="map" role="region" aria-label="Map showing the IP address location"></div>
+    <!-- Semantic section containing the interactive Leaflet map. -->
+    <section id="map" aria-label="Map showing the IP address location"></section>
+
+  </main>
 
   <!-- ========================================
        FOOTER

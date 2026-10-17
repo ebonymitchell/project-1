@@ -1,3 +1,6 @@
+/* global L */
+
+// Tell the code checker that L is provided by the Leaflet library.
 
 /* ========================================
    LEAFLET MAP SETUP
@@ -127,7 +130,8 @@ searchForm.addEventListener("submit", async (event) => {
         // Clear the loading message after a successful lookup.
         searchStatus.textContent = "";
 
-    } catch (error) {
+        // Catch errors without exposing sensitive information.
+    } catch {
 
         // Show a readable message if the API request fails.
         searchStatus.textContent =
