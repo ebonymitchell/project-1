@@ -38,7 +38,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [IP Address Tracker](https://www.frontendmentor.io/solutions/ip-address-tracker-GEiibLD2ls)
+- Solution URL: [Frontend Mentor](https://www.frontendmentor.io/solutions/ip-address-tracker-GEiibLD2ls)
 - Live Site URL: [IP Address Tracker](https://project-1-ip-address-tracker.netlify.app/)
 
 ## My process
