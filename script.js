@@ -130,8 +130,8 @@ searchForm.addEventListener("submit", async (event) => {
         // Clear the loading message after a successful lookup.
         searchStatus.textContent = "";
 
-        // Catch errors without exposing sensitive information.
-    } catch {
+        // Catch errors from the API request so we can display a message.
+    } catch (error) {
 
         // Show a readable message if the API request fails.
         searchStatus.textContent =
