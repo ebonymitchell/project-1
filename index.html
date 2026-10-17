@@ -2,65 +2,110 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- displays site properly based on user's device -->
+  <!-- ========================================
+       PAGE SETTINGS
+  ======================================== -->
 
+  <!-- Use UTF-8 to support standard text characters. -->
+  <meta charset="UTF-8">
+
+  <!-- Make the page scale correctly on mobile devices. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Display the project's favicon in the browser tab. -->
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
 
+  <!-- Set the browser tab title. -->
   <title>Frontend Mentor | IP Address Tracker</title>
 
+  <!-- ========================================
+       STYLESHEETS
+  ======================================== -->
+
+  <!-- Load our custom CSS. -->
   <link rel="stylesheet" href="styles.css">
 
-  <!-- Leaflet CSS -->
-  <link
-  rel="stylesheet"
-  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
->
+  <!-- Load Leaflet's CSS to style the interactive map. -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 
-  <!-- Leaflet JavaScript -->
+  <!-- Load the Rubik font from Google Fonts. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- ========================================
+       JAVASCRIPT
+  ======================================== -->
+
+  <!-- Load the Leaflet library before our own JavaScript. -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="" defer></script>
 
+  <!-- defer waits until the HTML is parsed before running our script. -->
   <script src="script.js" defer></script>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
-    rel="stylesheet">
 </head>
 
 <body>
 
+  <!-- ========================================
+       HEADER AND SEARCH FORM
+  ======================================== -->
+
   <header class="header">
+
+    <!-- Main heading for the page. -->
     <h1>IP Address Tracker</h1>
 
+    <!-- Users can submit an IP address or domain name. -->
     <form id="search-form">
+
+      <!-- This label is visually hidden by CSS but remains
+           accessible to screen readers. -->
       <label for="ip-address">IP address or domain</label>
 
+      <!-- JavaScript reads the value entered into this field. -->
       <input type="text" id="ip-address" name="ip-address" placeholder="Search for any IP address or domain" required>
 
+      <!-- Submits the form without refreshing the page,
+           because JavaScript calls preventDefault(). -->
       <button type="submit">Search</button>
+
     </form>
+
+    <!-- Announce search errors to assistive technologies.
+         JavaScript can update this text later. -->
+    <p id="search-status" role="status" aria-live="polite"></p>
+
   </header>
 
+  <!-- ========================================
+       IP ADDRESS RESULTS
+  ======================================== -->
 
+  <!-- JavaScript updates the values in this section
+       after a successful IP address lookup. -->
   <section id="results" aria-label="IP address lookup results">
+
+    <!-- IP address returned by the lookup. -->
     <div>
       <h2>IP Address</h2>
       <p id="result-ip">—</p>
     </div>
 
+    <!-- City and region associated with the IP address. -->
     <div>
       <h2>Location</h2>
       <p id="result-location">—</p>
     </div>
 
+    <!-- Timezone offset returned by the lookup. -->
     <div>
       <h2>Timezone</h2>
-      <p id="result-timezone">UTC —</p> <!-- add offset value dynamically using the API -->
+      <p id="result-timezone">UTC —</p>
     </div>
 
+    <!-- Internet Service Provider. -->
     <div>
       <h2>ISP</h2>
       <p id="result-isp">—</p>
@@ -68,12 +113,31 @@
 
   </section>
 
-  <div id="map" aria-label="Map showing the IP address location"></div>
+  <!-- ========================================
+       INTERACTIVE MAP
+  ======================================== -->
+
+  <!-- Leaflet renders the map inside this element.
+       JavaScript changes the center and marker location. -->
+  <div id="map" role="region" aria-label="Map showing the IP address location"></div>
+
+  <!-- ========================================
+       FOOTER
+  ======================================== -->
 
   <footer class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>.
+
+    <!-- Credit the original Frontend Mentor challenge. -->
+    Challenge by
+    <a href="https://www.frontendmentor.io?ref=challenge">
+      Frontend Mentor
+    </a>.
+
+    <!-- Replace # with your GitHub or portfolio URL later. -->
     Coded by <a href="#">Ebony Mitchell</a>.
+
   </footer>
+
 </body>
 
 </html>

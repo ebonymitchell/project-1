@@ -1,44 +1,51 @@
+/* ========================================
+   COLOR VARIABLES
+   Store reusable colors in one place.
+======================================== */
+
+:root {
+    --gray-950: hsl(0, 0%, 17%);
+    --gray-400: hsl(0, 0%, 58%);
+}
+
+/* ========================================
+   GLOBAL STYLES
+======================================== */
+
+/* Include padding and borders in element dimensions. */
 * {
     box-sizing: border-box;
 }
 
-
-.attribution {
-    font-size: 0.6875rem;
-    text-align: center;
-}
-
-.attribution a {
-    color: hsl(228, 45%, 44%);
-}
-
+/* Apply the Rubik font and remove default page margins. */
 body {
-    font-size: 1.125rem;
-    font-family: "Rubik", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    /* Weights: 400, 500, 700 */
-    font-style: normal;
     margin: 0;
+    font-family: "Rubik", sans-serif;
+    font-size: 1.125rem;
+    font-weight: 400;
 }
 
-/* h1 {
-    color: red;
-} */
+/* ========================================
+   HEADER
+======================================== */
 
+/* Display the desktop background and center header content. */
 .header {
     background-image: url("./images/pattern-bg-desktop.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1.5rem;
+
     padding: 2rem 1.5rem;
     min-height: 17.5rem;
 }
 
+/* Style the main page heading. */
 .header h1 {
     color: white;
     font-size: 1.625rem;
@@ -47,12 +54,19 @@ body {
     text-align: center;
 }
 
+/* ========================================
+   SEARCH FORM
+======================================== */
+
+/* Keep the input and button next to each other. */
 #search-form {
     display: flex;
     width: 100%;
     max-width: 34.6875rem;
 }
 
+/* Keep the label available to screen readers
+   without displaying it visually. */
 #search-form label {
     position: absolute;
     width: 1px;
@@ -65,6 +79,7 @@ body {
     border: 0;
 }
 
+/* Allow the input to fill the available form width. */
 #search-form input {
     flex: 1;
     min-width: 0;
@@ -74,6 +89,7 @@ body {
     font: inherit;
 }
 
+/* Style the search button. */
 #search-form button {
     background-color: var(--gray-950);
     color: white;
@@ -83,6 +99,25 @@ body {
     cursor: pointer;
 }
 
+/* Show a visual response when hovering over the button. */
+#search-form button:hover {
+    background-color: hsl(0, 0%, 30%);
+}
+
+/* Make keyboard navigation easier to see. */
+#search-form input:focus-visible,
+#search-form button:focus-visible {
+    outline: 3px solid #f79009;
+    outline-offset: 2px;
+}
+
+/* ========================================
+   RESULTS CARD
+======================================== */
+
+/* Display four equal columns on desktop.
+   Negative margin moves the card upward into the header area.
+   z-index keeps the card above the map. */
 #results {
     background-color: white;
     border-radius: 0.9375rem;
@@ -90,13 +125,16 @@ body {
     width: 90%;
     max-width: 69.375rem;
     margin-inline: auto;
+
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+
     position: relative;
     margin-top: -2rem;
     z-index: 10;
 }
 
+/* Style the labels above each result value. */
 #results h2 {
     color: var(--gray-400);
     font-size: 0.75rem;
@@ -106,22 +144,117 @@ body {
     margin: 0 0 0.75rem;
 }
 
+/* Style the returned IP address, location, timezone, and ISP. */
 #results p {
     color: var(--gray-950);
     font-size: 1.5rem;
     font-weight: 500;
     margin: 0;
+    overflow-wrap: anywhere;
 }
 
+/* Add vertical dividers between desktop result columns. */
 #results>div:not(:last-child) {
     border-right: 1px solid hsl(0, 0%, 85%);
 }
 
-#results > div {
-  padding-inline: 1.5rem;
+/* Add spacing inside each result column. */
+#results>div {
+    padding-inline: 1.5rem;
 }
 
+/* ========================================
+   MAP
+======================================== */
+
+/* Give Leaflet a defined height.
+   Negative margin pulls the map behind the results card. */
 #map {
-  height: 60vh;
-  min-height: 400px;
+    height: 60vh;
+    min-height: 500px;
+    margin-top: -3rem;
+    z-index: 0;
 }
+
+/* ========================================
+   FOOTER
+======================================== */
+
+/* Keep the challenge attribution small and centered. */
+.attribution {
+    font-size: 0.6875rem;
+    text-align: center;
+    padding: 0.75rem;
+}
+
+/* Style attribution links. */
+.attribution a {
+    color: hsl(228, 45%, 44%);
+}
+
+/* Display search feedback without disrupting the header layout. */
+#search-status {
+    color: white;
+    font-size: 0.875rem;
+    margin: 0;
+}
+
+/* Hide the status element when it contains no message. */
+#search-status:empty {
+    display: none;
+}
+
+/* ========================================
+   MOBILE RESPONSIVE LAYOUT
+   Applies to screens 768px wide or smaller.
+======================================== */
+
+@media (max-width: 768px) {
+
+    /* Use the mobile background and reduce header height. */
+    .header {
+        background-image: url("./images/pattern-bg-mobile.png");
+        min-height: 16rem;
+        padding: 1.5rem;
+    }
+
+
+    /* Reduce heading size for smaller screens. */
+    .header h1 {
+        font-size: 1.5rem;
+    }
+
+    /* Position the results closer to the search form. */
+    #results {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 1.25rem;
+        margin-top: -4rem;
+        text-align: center;
+    }
+
+    /* Reduce spacing between each label and its result. */
+    #results h2 {
+        margin-bottom: 0.5rem;
+    }
+
+    /* Remove desktop column padding. */
+    #results>div {
+        padding-inline: 0;
+    }
+
+    /* Remove desktop vertical dividers. */
+    #results>div:not(:last-child) {
+        border-right: none;
+    }
+
+    /* Adjust result text for narrow screens. */
+    #results p {
+        font-size: 1.25rem;
+    }
+
+    /* Pull the map farther upward behind the results card. */
+    #map {
+        min-height: 500px;
+        margin-top: -8rem;
+    }
